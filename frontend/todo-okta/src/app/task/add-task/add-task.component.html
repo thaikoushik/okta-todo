@@ -1,0 +1,33 @@
+<div class="center-screen"><mat-form-field>
+    <input matInput type="text" [(ngModel)]="taskText" />
+    <button
+      mat-button
+      *ngIf="taskText"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="taskText = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="addTaskClicked($event)">
+    Add Task
+  </button>
+  <table>
+    <tr *ngFor="let task of tasks">
+      <td>
+        <mat-checkbox [(ngModel)]="task.checked">{{ task.text }}</mat-checkbox>
+      </td>
+    </tr>
+  </table>
+
+  <button
+    mat-raised-button
+    color="primary"
+    *ngIf="tasks.length > 0"
+    (click)="removeTasks()"
+  >
+    Complete
+  </button>
+  </div>
